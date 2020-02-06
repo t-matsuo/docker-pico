@@ -14,6 +14,8 @@ RUN chown -R apache:apache /var/www/html/.htaccess
 
 COPY docker-entrypoint.sh /
 VOLUME /var/www/html/content
+VOLUME /var/www/html/assets
+VOLUME /var/www/html/themes
 VOLUME /data
 
 CMD ["/docker-entrypoint.sh"]
