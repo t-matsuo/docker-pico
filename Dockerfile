@@ -5,7 +5,7 @@ ARG PICO_VERSION="2.1.1"
 RUN yum install -y httpd php php-xml php-mbstring php-pear
 COPY ./httpd.conf /etc/httpd/conf/httpd.conf
 
-ADD https://github.com/picocms/Pico/releases/download/v2.1.1/pico-release-v$PICO_VERSION.tar.gz /var/www/html/
+ADD https://github.com/picocms/Pico/releases/download/v${PICO_VERSION}/pico-release-v${PICO_VERSION}.tar.gz /var/www/html/
 WORKDIR /var/www/html/
 RUN tar -xf pico-release-v$PICO_VERSION.tar.gz && rm pico-release-v$PICO_VERSION.tar.gz
 COPY ./config.php /var/www/html/config/config.php
