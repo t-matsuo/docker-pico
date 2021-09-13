@@ -1,6 +1,6 @@
 From library/centos:7
 
-ARG PICO_VERSION="2.1.1"
+ARG PICO_VERSION="2.1.4"
 
 RUN yum install -y httpd php php-xml php-mbstring php-pear
 COPY ./httpd.conf /etc/httpd/conf/httpd.conf
