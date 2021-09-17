@@ -8,18 +8,22 @@ Dockerfile to build [Pico CMS](https://github.com/picocms/Pico) container image.
 # docker build -t mypico .
 ```
 
+or use this image
+
+`ghcr.io/t-matsuo/docker-pico/pico`
+
 ## Usage
 
 Run container with default config.
 
 ```
-# docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content --name pico mypico
+# docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content --name pico ghcr.io/t-matsuo/docker-pico/pico
 ```
 
 Run container with custom config. Template file is [here](https://github.com/picocms/Pico/blob/v2.1.4/config/config.yml.template).
 
 ```
-# docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content -v /path/to/your/config.yml:/var/www/html/config/config.yml --name pico mypico
+# docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content -v /path/to/your/config.yml:/var/www/html/config/config.yml --name pico ghcr.io/t-matsuo/docker-pico/pico
 ```
 
 Change [theme](https://picocms.org/themes/).
@@ -30,7 +34,7 @@ Change [theme](https://picocms.org/themes/).
 # mkdir themes
 # git clone https://github.com/sonst-was/simpleTwo.git
 # mv simpleTwo/simpletwo themes/
-# docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content -v `pwd`/themes:/var/www/html/themes -e THEME="simpletwo" --name pico mypico
+# docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content -v `pwd`/themes:/var/www/html/themes -e THEME="simpletwo" --name pico ghcr.io/t-matsuo/docker-pico/pico
 ```
 
 ## Environment Variables
