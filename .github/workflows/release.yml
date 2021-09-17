@@ -23,8 +23,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-           if [ "${{ github.event_name }}" = 'release' ]; then
-               export CONTAINER_TAG="${{ github.event.release.tag_name }}"
+           if [ "${{ github.event_name }}" = 'push' ] && [[ ${{ github.ref }} =~ refs/tags/ ]] ; then
+               export CONTAINER_TAG=`echo ${{ github.ref }} | sed -e "s#refs/tags/##g"`
            else
                export CONTAINER_TAG="latest"
            fi
