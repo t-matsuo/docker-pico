@@ -4,7 +4,7 @@ on:
     branches:
     - master
     tags:
-    - v[0-9]+*"
+    - "v[0-9]+*"
 
 env:
   CONTAINER_NAME: docker.pkg.github.com/${{ github.repository }}/pico
