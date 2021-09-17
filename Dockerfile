@@ -18,11 +18,6 @@ RUN chmod a+rwx /run/httpd
 RUN chmod a+rwx /run/httpd/htcacheclean
 
 COPY docker-entrypoint.sh /
-VOLUME /var/www/html/content
-VOLUME /var/www/html/assets
-VOLUME /var/www/html/themes
-VOLUME /data
-
 CMD ["/docker-entrypoint.sh"]
 
 USER apache
