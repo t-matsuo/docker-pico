@@ -22,6 +22,12 @@ Run container with custom config. Template file is [here](https://github.com/pic
 # docker run -d -p 80:80 -v /path/to/your/content:/var/www/html/content -v /path/to/your/config.yml:/var/www/html/config/config.yml --name pico mypico
 ```
 
+## Environment Variables
+
+* `SITE_TITLE` default: "Pico"
+* `PICO_DEBUG` default: "false"
+   * set "true" to use debug mode
+
 ## Directories
 
 * /var/www/html/content
