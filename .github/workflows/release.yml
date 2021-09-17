@@ -1,0 +1,31 @@
+name: "Build and Push container image"
+on: 
+  push:
+    branches:
+    - master
+    tags:
+    - v[0-9]+*"
+
+env:
+  CONTAINER_NAME: docker.pkg.github.com/${{ github.repository }}/pico
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+           if [ "${{ github.event_name }}" = 'release' ]; then
+               export CONTAINER_TAG="${{ github.event.release.tag_name }}"
+           else
+               export CONTAINER_TAG="latest"
+           fi
+           docker build . -t "${CONTAINER_NAME}:${CONTAINER_TAG}"
+           echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u t-matsuo --password-stdin
+           docker push "${CONTAINER_NAME}:${CONTAINER_TAG}"
